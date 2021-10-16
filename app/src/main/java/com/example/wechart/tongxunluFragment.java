@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import android.app.Fragment;
 
+import com.example.wechart.R;
+
 
 public class tongxunluFragment extends Fragment {
 

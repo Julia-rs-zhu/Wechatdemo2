@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 
 import android.app.Fragment;
 
+import com.example.wechart.R;
+
 
 public class faxianFragment extends Fragment {
 
 
-    public faxianFragment() {
+    public void faxianFragment() {
         // Required empty public constructor
     }
 
