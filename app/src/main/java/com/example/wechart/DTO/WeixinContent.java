@@ -1,16 +1,22 @@
 package com.example.wechart.DTO;
 
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class WeixinContent {
     private Integer weChatAvatarId;
     private String weChatName;
     private String weChatContent;
     private String weChatTime;
 
+
+
     public WeixinContent(Integer weChatAvaterId, String weChatName, String weChatContent, String weChatTime) {
         this.weChatAvatarId = weChatAvaterId;
         this.weChatName = weChatName;
         this.weChatContent = weChatContent;
         this.weChatTime = weChatTime;
+
     }
 
     public WeixinContent() {
@@ -48,5 +54,6 @@ public class WeixinContent {
     public void setWeChatTime(String weChatTime) {
         this.weChatTime = weChatTime;
     }
+
 }
 

@@ -1,6 +1,8 @@
 package com.example.wechart.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wechart.R;
 import com.example.wechart.DTO.WeixinContent;
+import com.example.wechart.details.detail_caoActivity;
 
 
 import java.util.List;
@@ -23,15 +26,19 @@ public class WeixinAdapter extends RecyclerView.Adapter<WeixinAdapter.WeixinView
     private LayoutInflater inflater;
 
     //添加了一个接口
-    public interface OnItemOnClickListener{
-        void onItemOnClick(View view,int position);
-        void onItemLongOnClick(View view ,int position);
+    public interface OnItemOnClickListener {
+        void onItemOnClick(View view, int position);
+
+        void onItemLongOnClick(View view, int position);
     }
+
     private OnItemOnClickListener mOnItemOnClickListener;
+
     //供外部来设置监听
-    public void setOnItemOnClickListener(OnItemOnClickListener listener){
+    public void setOnItemOnClickListener(OnItemOnClickListener listener) {
         this.mOnItemOnClickListener = listener;
     }
+
     public WeixinAdapter(Context context, List<WeixinContent> wechatData) {
         this.context = context;
         this.wechatData = wechatData;
@@ -41,18 +48,19 @@ public class WeixinAdapter extends RecyclerView.Adapter<WeixinAdapter.WeixinView
     @NonNull
     @Override
     public WeixinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(this.context).inflate(R.layout.weixin_content, parent, false);
+        View view = LayoutInflater.from(this.context).inflate(R.layout.weixin_content1, parent, false);
         return new WeixinViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WeixinViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WeixinViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.wechatAvaterView.setImageResource(wechatData.get(position).getWeChatAvaterId());
         holder.wechatNameView.setText(wechatData.get(position).getWeChatName());
         holder.wechatContentView.setText(wechatData.get(position).getWeChatContent());
         holder.wechatTimeView.setText(wechatData.get(position).getWeChatTime());
+
         //在ViewBinder里进行绑定
-        if (mOnItemOnClickListener!=null) {
+        if (mOnItemOnClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,11 +75,20 @@ public class WeixinAdapter extends RecyclerView.Adapter<WeixinAdapter.WeixinView
                 }
             });
         }
+        holder.wechatNameView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, detail_caoActivity.class);
+                intent.putExtra("name",wechatData.get(position).getWeChatName());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return wechatData == null ? 0:wechatData.size();
+        return wechatData == null ? 0 : wechatData.size();
     }
 
     //根据位置删除wechatDate里的数据
@@ -92,15 +109,18 @@ public class WeixinAdapter extends RecyclerView.Adapter<WeixinAdapter.WeixinView
 
 
     public class WeixinViewHolder extends RecyclerView.ViewHolder {
-        TextView wechatNameView,wechatContentView,wechatTimeView;
+        TextView wechatNameView, wechatContentView, wechatTimeView;
         ImageView wechatAvaterView;
+
+
         public WeixinViewHolder(@NonNull View itemView) {
             super(itemView);
             wechatAvaterView = itemView.findViewById(R.id.tv_avatar);
             wechatNameView = itemView.findViewById(R.id.tv_wechat_name);
             wechatContentView = itemView.findViewById(R.id.tv_wechat_content);
             wechatTimeView = itemView.findViewById(R.id.tv_we_chat_time);
+
         }
     }
-}
 
+}
