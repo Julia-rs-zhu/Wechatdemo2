@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wechart">
-
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wechart">
         <activity
-            android:name=".details.detail_caoActivity"
+            android:name=".DeviceList"
             android:exported="true" />
         <activity
-            android:name="com.example.demo_1023.MainActivity1"
+            android:name=".details.detail_caoActivity"
             android:exported="true" />
+<!--        <activity-->
+<!--            android:name="com.example.demo_1023.MainActivity1"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">

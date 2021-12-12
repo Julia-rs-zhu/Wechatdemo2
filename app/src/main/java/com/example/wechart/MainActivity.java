@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,17 +32,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        textView=findViewById(R.id.textView2);
+        textView = findViewById(R.id.textView2);
 
-        LinearLayout1=findViewById(R.id.tab_weixin);
-        LinearLayout2=findViewById(R.id.tab_tongxunlu);
-        LinearLayout3=findViewById(R.id.tab_faxian);
-        LinearLayout4=findViewById(R.id.tab_shezhi);
+        LinearLayout1 = findViewById(R.id.tab_weixin);
+        LinearLayout2 = findViewById(R.id.tab_tongxunlu);
+        LinearLayout3 = findViewById(R.id.tab_faxian);
+        LinearLayout4 = findViewById(R.id.tab_shezhi);
 
-        imageWeixin=findViewById(R.id.imageView);
-        imagetongxunlu=findViewById(R.id.imageView1);
-        imagefaxian=findViewById(R.id.imageView2);
-        imageshezhi=findViewById(R.id.imageView3);
+        imageWeixin = findViewById(R.id.imageView);
+        imagetongxunlu = findViewById(R.id.imageView1);
+        imagefaxian = findViewById(R.id.imageView2);
+        imageshezhi = findViewById(R.id.imageView3);
 
         LinearLayout1.setOnClickListener(this);
         LinearLayout2.setOnClickListener(this);
